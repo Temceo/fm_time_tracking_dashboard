@@ -1,0 +1,272 @@
+:root {
+  /* primary colours */
+  --fc-blue: hsl(246, 80%, 60%);
+  --fc-light-red-work: hsl(15, 100%, 70%);
+  --fc-soft-blue-play: hsl(195, 74%, 62%);
+  --fc-light-red-study: hsl(348, 100%, 68%);
+  --fc-lime-green-exercise: hsl(145, 58%, 55%);
+  --fc-violet-social: hsl(264, 64%, 52%);
+  --fc-soft-orange-self-care: hsl(43, 84%, 65%);
+
+  /* neutral */
+  --fc-very-dark-blue: hsl(226, 43%, 10%);
+  --fc-dark-blue: hsl(235, 46%, 20%);
+  --fc-desaturated-blue: hsl(235, 45%, 61%);
+  --fc-pale-blue: hsl(236, 100%, 87%);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--fc-very-dark-blue);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  margin-top: 2rem;
+  max-width: 800px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* cards */
+/* generic */
+.icon {
+  height: 5rem;
+  position: absolute;
+  top: -2px;
+  right: 8px;
+  z-index: -1;
+}
+
+.card__content,
+.card__avatar-bottom {
+  background-color: var(--fc-dark-blue);
+}
+
+.card__profile,
+.work,
+.play,
+.study,
+.exercise,
+.social,
+.self-care {
+  display: grid;
+  overflow: hidden;
+}
+
+/* avatar card */
+.card__profile img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-top: 0.5rem;
+}
+
+.card__avatar-top {
+  display: flex;
+  /* vertical-align: middle; */
+  gap: 2rem;
+  padding: 3rem;
+  background-color: var(--fc-blue);
+  border-radius: 10px;
+  margin-bottom: -12px;
+  z-index: 1;
+}
+
+.card__avatar-top h1 {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.card__avatar-top span {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--fc-pale-blue);
+}
+
+.card__avatar-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  border-radius: 0 0 10px 10px;
+}
+
+.card__avatar-bottom button {
+  color: var(--fc-pale-blue);
+  background-color: transparent;
+  border: none;
+}
+
+.card__avatar-bottom button:hover,
+.card__avatar-bottom button:active {
+  cursor: pointer;
+  color: white;
+}
+
+/* other cards */
+
+.work-top,
+.play-top,
+.study-top,
+.exercise-top,
+.social-top,
+.self-care-top {
+  position: relative;
+  height: 4rem;
+  z-index: -1;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__content {
+  border-radius: 10px;
+  margin-top: -12px;
+  padding: 3rem 2rem;
+}
+
+.card__content > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.card__content .heading {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.card__content .current {
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.card__content .dots,
+.card__content .previous {
+  color: var(--fc-pale-blue);
+}
+
+.dot {
+  height: 0.4rem;
+  width: 0.4rem;
+  background-color: var(--fc-pale-blue);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.card__content .previous {
+  font-size: 1rem;
+}
+
+.card__content .content-lower {
+  margin-top: 1rem;
+}
+
+/* work card */
+.work-top {
+  background-color: var(--fc-light-red-work);
+}
+
+/* play card */
+
+.play-top {
+  background-color: var(--fc-soft-blue-play);
+}
+
+/* study card */
+
+.study-top {
+  background-color: var(--fc-light-red-study);
+}
+
+/* exercise card */
+
+.exercise-top {
+  background-color: var(--fc-lime-green-exercise);
+}
+
+/* social card */
+
+.social-top {
+  background-color: var(--fc-violet-social);
+}
+
+/* self care card */
+
+.self-care-top {
+  background-color: var(--fc-soft-orange-self-care);
+}
+
+@media (min-width: 700px) {
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-areas:
+      "user-profile work play study"
+      "user-profile exercise social care";
+  }
+
+  .card__profile {
+    grid-area: user-profile;
+  }
+
+  .work {
+    grid-area: work;
+  }
+
+  .play {
+    grid-area: play;
+  }
+
+  .study {
+    grid-area: study;
+  }
+
+  .exercise {
+    grid-area: exercise;
+  }
+
+  .social {
+    grid-area: social;
+  }
+
+  .self-care {
+    grid-area: care;
+  }
+
+  /* card avatar */
+  .card__avatar-top,
+  .card__avatar-bottom {
+    flex-direction: column;
+  }
+
+  .card__avatar-bottom {
+    align-items: start;
+    gap: 2rem;
+  }
+
+  /* cards */
+  .card__content .content-lower {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+}
